@@ -17,8 +17,8 @@
         <version>2.2.2.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>cn.org.nf404</groupId>
-    <artifactId>nf4slide</artifactId>
+    <groupId>cn.org.nf404.nf4slide</groupId>
+    <artifactId>slide</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>nf4slide</name>
     <description>Demo project for Spring Boot</description>
