@@ -10,6 +10,21 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>slide-server</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>cn.org.nf404.nf4slide</groupId>
+            <artifactId>slide-common</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.org.nf404.nf4slide</groupId>
+            <artifactId>slide-api</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
 
 </project>
