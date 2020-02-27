@@ -19,7 +19,7 @@ import java.util.Map;
  */
 @SuppressWarnings("unused")
 @Data
-public class BaseModel implements Serializable {
+public abstract class BaseModel implements Serializable {
     private static final long serialVersionUID = -8969680472597387486L;
 
     /**

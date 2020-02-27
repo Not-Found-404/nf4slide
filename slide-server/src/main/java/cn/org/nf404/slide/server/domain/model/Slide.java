@@ -63,7 +63,7 @@ public class Slide extends BaseModel {
     public void setAuthors(Set<String> authors) {
         this.authors = authors;
         if (!CollectionUtils.isEmpty(authors)) {
-            authorSet = Joiner.on("$").join(authors);
+            authorSet = Joiner.on("#").join(authors);
         } else {
             authorSet = Strings.EMPTY;
         }
@@ -74,7 +74,7 @@ public class Slide extends BaseModel {
         if (!StringUtils.isEmpty(authorSet)) {
             authors = Sets.newHashSetWithExpectedSize(0);
         } else {
-            authors = Sets.newHashSet(authorSet.split("$"));
+            authors = Sets.newHashSet(authorSet.split("#"));
         }
     }
 }
