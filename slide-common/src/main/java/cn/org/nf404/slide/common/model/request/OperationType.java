@@ -4,7 +4,7 @@ package cn.org.nf404.slide.common.model.request;
  * @author dx DingXing
  * @date 2020-01-01
  */
-@SuppressWarnings("all")
+@SuppressWarnings("unused")
 public interface OperationType {
 
 

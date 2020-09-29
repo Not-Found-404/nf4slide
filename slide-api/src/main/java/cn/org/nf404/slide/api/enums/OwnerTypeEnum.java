@@ -11,6 +11,7 @@ public enum OwnerTypeEnum {
      * 团队
      */
     TEAM,
+
     /**
      * 用户
      */

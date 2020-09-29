@@ -1,4 +1,4 @@
-package cn.org.nf404.slide.server.server;
+package cn.org.nf404.slide.server.domain.service;
 
 import cn.org.nf404.slide.api.response.user.UserMetaData;
 import cn.org.nf404.slide.common.model.exception.ServiceException;
@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 @Service
+@SuppressWarnings("unused")
 public class UserReadService {
-
 
     public UserMetaData getUserFromRedis(String key) {
         throw new ServiceException("not.impl");

@@ -1,6 +1,7 @@
 package cn.org.nf404.slide.api.facade;
 
 import cn.org.nf404.slide.api.request.user.*;
+import cn.org.nf404.slide.api.response.user.UserLoginInfo;
 import cn.org.nf404.slide.api.response.user.UserMetaData;
 import cn.org.nf404.slide.api.response.user.UserThinResponse;
 import cn.org.nf404.slide.common.model.request.Paging;
@@ -18,7 +19,7 @@ public interface UserFacade {
      * @param request request of login
      * @return token
      */
-    Response<String> login(UserLoginRequest request);
+    Response<UserMetaData> login(UserLoginRequest request);
 
     Response<UserMetaData> getFromRedis(UserGetFromRedisRequest request);
 

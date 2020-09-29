@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Throwables;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.log4j.util.Strings;
 
 import java.util.Map;
 
@@ -53,10 +52,11 @@ public class JsonHelper {
             return this.mapper.writeValueAsString(o);
         } catch (Exception e) {
             log.error("failed to converter object to json, object:{},cause:{}", e, Throwables.getStackTraceAsString(e));
-            return Strings.EMPTY;
+            return null;
         }
     }
 
+    @SuppressWarnings("Duplicates")
     private <T> T innerToObject(String json, Class<T> clazz) {
         try {
             if (null == json || json.isEmpty()) {
@@ -68,6 +68,20 @@ public class JsonHelper {
             return null;
         }
     }
+
+    @SuppressWarnings("Duplicates")
+    private <T> T innerToObject(String json, TypeReference<T> clazz) {
+        try {
+            if (null == json || json.isEmpty()) {
+                return null;
+            }
+            return this.mapper.readValue(json, clazz);
+        } catch (Exception e) {
+            log.error("failed to converter json to object, json:{},cause:{}", e, Throwables.getStackTraceAsString(e));
+            return null;
+        }
+    }
+
 
     /**
      * object to map
@@ -90,6 +104,19 @@ public class JsonHelper {
     public static <T> T toObject(String json, Class<T> clazz) {
         return getInstance().innerToObject(json, clazz);
     }
+
+    /**
+     * json string to object
+     *
+     * @param json  json string
+     * @param tTypeReference class
+     * @param <T>   class
+     * @return instance of class
+     */
+    public static <T> T toObject(String json, TypeReference<T> tTypeReference) {
+        return getInstance().innerToObject(json, tTypeReference);
+    }
+
 
     /**
      * object to json

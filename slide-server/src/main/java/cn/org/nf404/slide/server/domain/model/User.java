@@ -5,6 +5,8 @@ import cn.org.nf404.slide.common.model.domain.BaseModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.Map;
+
 /**
  * 用户
  *
@@ -54,10 +56,10 @@ public class User extends BaseModel {
     /**
      * 角色
      */
-    private String roleJson;
+    private Map<String, Object> role;
 
     /**
      * 标签
      */
-    private String tagJson;
+    private Map<String, Object> tag;
 }

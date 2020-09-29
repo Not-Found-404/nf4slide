@@ -54,29 +54,14 @@ public class Slide extends BaseModel {
     private Integer version;
 
     /**
+     * 幻灯片内容
+     */
+    private SlideContent content;
+
+    /**
      * 编辑参与人
      */
     private Set<String> authors;
-
-    private String authorSet;
-
-    public void setAuthors(Set<String> authors) {
-        this.authors = authors;
-        if (!CollectionUtils.isEmpty(authors)) {
-            authorSet = Joiner.on("#").join(authors);
-        } else {
-            authorSet = Strings.EMPTY;
-        }
-    }
-
-    public void setAuthorSet(String authorSet) {
-        this.authorSet = authorSet;
-        if (!StringUtils.isEmpty(authorSet)) {
-            authors = Sets.newHashSetWithExpectedSize(0);
-        } else {
-            authors = Sets.newHashSet(authorSet.split("#"));
-        }
-    }
 }
 
 

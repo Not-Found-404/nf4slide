@@ -31,7 +31,7 @@ public class UserRegistryRequest extends AbstractRequest implements Serializable
     private String name;
 
     @ApiModelProperty(value = "手机号", required = true)
-    private String mobile;
+    private String phone;
 
     @ApiModelProperty(value = "密码", required = true)
     private String password;
@@ -42,8 +42,8 @@ public class UserRegistryRequest extends AbstractRequest implements Serializable
     @Override
     public void checkParam() {
         super.checkParam();
-        ParamUtil.nonNull(this.mobile, "mobile");
-        ParamUtil.isPhoneNumber(this.mobile);
+        ParamUtil.nonNull(this.phone, "mobile");
+        ParamUtil.isPhoneNumber(this.phone);
         ParamUtil.nonNull(this.code, "verify.code");
         ParamUtil.nonNull(this.password, "password");
     }

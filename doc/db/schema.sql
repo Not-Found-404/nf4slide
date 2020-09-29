@@ -107,7 +107,7 @@ CREATE TABLE `user` (
   `type` smallint(6) NOT NULL COMMENT '用户类型',
   `avatar` varchar(255) DEFAULT NULL COMMENT '头像图片地址',
   `name` varchar(40) DEFAULT NULL COMMENT '真实姓名',
-  `status` tinyint(4) NOT NULL COMMENT '状态',
+  `status` varchar(10) NOT NULL COMMENT '状态',
   `role_json` varchar(512) DEFAULT NULL COMMENT '用户权限信息',
   `extra_json` varchar(1024) DEFAULT NULL COMMENT '用户额外信息',
   `tag_json` varchar(1024) DEFAULT NULL COMMENT '用户标签的json表示形式',
@@ -116,4 +116,4 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_users_email` (`email`),
   UNIQUE KEY `idx_users_mobile` (`phone`)
-) ENGINE=InnoDB DEFAULT AUTO_INCREMENT = 100 CHARSET=utf8 COMMENT='用户表';
+) ENGINE=InnoDB CHARSET=utf8 COMMENT='用户表';

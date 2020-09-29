@@ -16,5 +16,11 @@
             <artifactId>slide-web</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>cn.org.nf404.nf4slide</groupId>
+            <artifactId>slide-server</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 </project>
