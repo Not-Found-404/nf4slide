@@ -5,6 +5,7 @@ import cn.org.nf404.slide.common.model.domain.BaseModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
@@ -15,7 +16,7 @@ import java.util.Map;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class User extends BaseModel {
+public class User extends BaseModel implements Serializable {
     private static final long serialVersionUID = 4690347459659334187L;
 
     /**

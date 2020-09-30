@@ -40,7 +40,7 @@ public final class FacadeExecutor {
             log.error("failed to execute:{}, error:{}", "", e.getMessage());
             return Response.fail(e.getMessage(), Response.ARGUMENT_ERROR);
         } else if (e instanceof ServiceException) {
-            log.error("failed to execute:{}, error:{}", "", ((ServiceException) e).getMessage());
+            log.error("failed to execute:{}, error:{}, params:{}", "", e.getMessage(), ((ServiceException) e).getParams());
             return Response.fail(e.getMessage(), Response.SERVICE_ERROR);
         } else {
             log.error("failed to execute:{}, cause:{}", "", Throwables.getStackTraceAsString(e));

@@ -17,7 +17,6 @@ import java.util.Map;
  * @author dx DingXing
  * @date 2020-01-01
  */
-@SuppressWarnings("unused")
 @Data
 public abstract class BaseModel implements Serializable {
     private static final long serialVersionUID = -8969680472597387486L;
@@ -46,28 +45,4 @@ public abstract class BaseModel implements Serializable {
      * 额外信息的map存储
      */
     private Map<String, Object> extra;
-
-    /**
-     * 额外信息
-     */
-    @JsonIgnore
-    private String extraJson;
-
-    public void setExtra(Map<String, Object> extra) {
-        this.extra = extra;
-        if (extra == null || extra.isEmpty()) {
-            this.extraJson = null;
-        } else {
-            this.extraJson = JsonHelper.toJson(extra);
-        }
-    }
-
-    public void setExtraJson(String extraJson) {
-        this.extraJson = extraJson;
-        if (!StringUtils.isEmpty(extraJson)) {
-            extra = JsonHelper.toMap(extraJson);
-        } else {
-            extra = Maps.newHashMap();
-        }
-    }
 }

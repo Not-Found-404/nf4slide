@@ -2,6 +2,7 @@ package cn.org.nf404.slide.common.model.request;
 
 import cn.org.nf404.slide.common.utils.JsonHelper;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
@@ -9,7 +10,9 @@ import java.util.Map;
  * @date 2019/2/25 下午1:40
  */
 @SuppressWarnings("unused")
-public abstract class AbstractRequest {
+public abstract class AbstractRequest implements Serializable {
+
+    private static final long serialVersionUID = 6315771537568073609L;
     private Long userId;
     private String remoteIp;
 

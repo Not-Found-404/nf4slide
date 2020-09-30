@@ -11,10 +11,11 @@ import java.util.Date;
  * @author dx DingXing
  * @date 2020-09-28
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
 @Table(name = "user")
-public class UserDO implements Serializable {
+public class UserDO extends BaseDO implements Serializable {
     private static final long serialVersionUID = -8531948139305993443L;
 
     @Id

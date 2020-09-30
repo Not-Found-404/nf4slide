@@ -10,7 +10,7 @@ import org.mapstruct.Mapping;
  * @date 2020-09-28
  */
 @Mapper(componentModel = "spring", uses = JsonConverter.class)
-public interface SlideConverter {
+public interface UserDoConverter {
 
     /**
      * do to model
@@ -19,6 +19,7 @@ public interface SlideConverter {
      * @return User
      */
     @Mapping(source = "tagJson", target = "tag")
+    @Mapping(source = "roleJson", target = "role")
     @Mapping(source = "extraJson", target = "extra")
     User do2Model(UserDO userDO);
 
@@ -29,6 +30,7 @@ public interface SlideConverter {
      * @return UserDO
      */
     @Mapping(source = "tag", target = "tagJson")
-    @Mapping(source = "extra", target = "tagJson")
+    @Mapping(source = "role", target = "roleJson")
+    @Mapping(source = "extra", target = "extraJson")
     UserDO model2Do(User user);
 }

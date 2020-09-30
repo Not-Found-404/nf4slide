@@ -1,5 +1,6 @@
 package cn.org.nf404.slide.server.repository.entity;
 
+import cn.org.nf404.slide.common.model.enums.ModelStatusEnum;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -17,6 +18,8 @@ import java.util.Date;
  */
 @Data
 public abstract class BaseDO implements Serializable {
+    private static final long serialVersionUID = 5311141305133977631L;
+
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,4 +48,10 @@ public abstract class BaseDO implements Serializable {
      */
     @Column(name = "extra_json")
     private String extraJson;
+
+    public static void init(BaseDO baseDO) {
+        baseDO.setCreatedAt(new Date());
+        baseDO.setStatus(ModelStatusEnum.INIT.name());
+        baseDO.setUpdatedAt(new Date());
+    }
 }

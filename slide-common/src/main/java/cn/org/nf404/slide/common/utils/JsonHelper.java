@@ -39,6 +39,9 @@ public class JsonHelper {
 
     private Map<String, Object> innerToMap(Object o) {
         try {
+            if (null == o) {
+                return null;
+            }
             String json = this.mapper.writeValueAsString(o);
             return this.mapper.readValue(json, MAP_TYPE);
         } catch (Exception e) {
@@ -49,6 +52,9 @@ public class JsonHelper {
 
     private String innerToJson(Object o) {
         try {
+            if (null == o) {
+                return null;
+            }
             return this.mapper.writeValueAsString(o);
         } catch (Exception e) {
             log.error("failed to converter object to json, object:{},cause:{}", e, Throwables.getStackTraceAsString(e));
@@ -108,9 +114,9 @@ public class JsonHelper {
     /**
      * json string to object
      *
-     * @param json  json string
+     * @param json           json string
      * @param tTypeReference class
-     * @param <T>   class
+     * @param <T>            class
      * @return instance of class
      */
     public static <T> T toObject(String json, TypeReference<T> tTypeReference) {

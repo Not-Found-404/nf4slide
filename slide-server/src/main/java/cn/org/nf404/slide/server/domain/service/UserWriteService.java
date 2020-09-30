@@ -6,8 +6,10 @@ import cn.org.nf404.slide.api.request.user.UserRegistryRequest;
 import cn.org.nf404.slide.api.response.user.UserMetaData;
 import cn.org.nf404.slide.api.response.user.UserThinResponse;
 import cn.org.nf404.slide.common.model.exception.ServiceException;
+import cn.org.nf404.slide.server.domain.model.AddressTable;
 import cn.org.nf404.slide.server.domain.model.User;
-import cn.org.nf404.slide.server.repository.UserRepository;
+import cn.org.nf404.slide.server.repository.impl.AddressTableRepository;
+import cn.org.nf404.slide.server.repository.impl.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,8 @@ import org.springframework.stereotype.Service;
 public class UserWriteService {
 
     private UserRepository userRepository;
+
+    private AddressReadService addressReadService;
 
     public UserMetaData login(String mobile, String password) {
         User user = userRepository.findByPhoneAndPass(mobile, password);
@@ -47,15 +51,17 @@ public class UserWriteService {
     }
 
     public Long register(UserRegistryRequest request) {
+
+        this.addressReadService.findFullById(520000L);
+        return null;
+
         // TODO: 2020-09-28 check before save
-
-
-        User toCreate = new User();
-
-        toCreate.setPhone(request.getPhone());
-        toCreate.setPassword(request.getPassword());
-        toCreate.setType(UserTypeEnum.USER);
-
-        return this.userRepository.save(toCreate).getId();
+//        User toCreate = new User();
+//
+//        toCreate.setPhone(request.getPhone());
+//        toCreate.setPassword(request.getPassword());
+//        toCreate.setType(UserTypeEnum.USER);
+//
+//        return this.userRepository.save(toCreate).getId();
     }
 }
