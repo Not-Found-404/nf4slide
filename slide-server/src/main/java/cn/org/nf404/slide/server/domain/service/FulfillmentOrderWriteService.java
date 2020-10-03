@@ -1,10 +1,14 @@
 package cn.org.nf404.slide.server.domain.service;
 
 import cn.org.nf404.slide.api.request.fulfillment.FulfillmentOrderCreateRequest;
+import cn.org.nf404.slide.api.request.fulfillment.FulfillmentOrderDetailRequest;
 import cn.org.nf404.slide.api.request.fulfillment.FulfillmentOrderLineCreateParam;
+import cn.org.nf404.slide.api.response.order.FulfillmentOrderInfo;
 import cn.org.nf404.slide.common.model.enums.ModelStatusEnum;
 import cn.org.nf404.slide.common.model.exception.ServiceException;
+import cn.org.nf404.slide.common.utils.ParamUtil;
 import cn.org.nf404.slide.server.domain.converter.FulfillmentOrderConverter;
+import cn.org.nf404.slide.server.domain.converter.InfoConverter;
 import cn.org.nf404.slide.server.domain.model.*;
 import cn.org.nf404.slide.server.repository.impl.FulfillmentOrderRepository;
 import cn.org.nf404.slide.server.repository.impl.GoodsRepository;
@@ -30,6 +34,7 @@ import java.util.stream.Collectors;
 public class FulfillmentOrderWriteService {
     private final FulfillmentOrderRepository orderRepository;
     private final FulfillmentOrderConverter orderConverter;
+    private final InfoConverter infoConverter;
 
     private final UserRepository userRepository;
     private final GoodsRepository goodsRepository;
@@ -45,7 +50,6 @@ public class FulfillmentOrderWriteService {
                 .collect(Collectors.toSet());
         Map<Long, Goods> idToGoods = this.checkGoods(goodsIds);
         Multimap<Long, FulfillmentOrderLine> historyOrderLine = this.orderRepository.findHistory(request.getDealerId(), idToGoods.keySet());
-        ;
 
         Map<Long, Long> goodsIdToHistoryPrice = historyOrderLine.keySet().stream()
                 .map(e -> Lists.newArrayList(historyOrderLine.get(e)).get(0))
@@ -53,9 +57,9 @@ public class FulfillmentOrderWriteService {
         Map<Long, Long> goodsIdToOriginalPrice = idToGoods.values().stream()
                 .collect(Collectors.toMap(Goods::getId, Goods::getOriginalAmount));
 
-        OperateInfo operateInfo = new OperateInfo();
-        operateInfo.setAcceptorId(acceptor.getId());
-        operateInfo.setAcceptorName(acceptor.getName());
+        OperateDesc operateDesc = new OperateDesc();
+        operateDesc.setAcceptorId(acceptor.getId());
+        operateDesc.setAcceptorName(acceptor.getName());
 
 
         List<FulfillmentOrderLine> orderLineList = request.getOrderLineLists().stream()
@@ -70,7 +74,8 @@ public class FulfillmentOrderWriteService {
                         paidAmount = null != historyPrice ? historyPrice : originalAmount;
                     }
 
-                    orderLine.setOperateInfo(operateInfo);
+                    orderLine.setOperateDesc(operateDesc);
+                    orderLine.setDealerId(request.getDealerId());
                     orderLine.setPrice(Price.of(originalAmount, paidAmount));
                     return orderLine;
                 })
@@ -85,7 +90,8 @@ public class FulfillmentOrderWriteService {
         OrderStatus initStatus = OrderStatus.init();
         order.setOrderStatus(initStatus);
         order.setPrice(totalPrice);
-        order.setOperateInfo(operateInfo);
+        order.setOperateDesc(operateDesc);
+        order.setFulfillmentOrderLines(orderLineList);
 
         return this.orderRepository.create(order);
     }
@@ -103,5 +109,11 @@ public class FulfillmentOrderWriteService {
             }
         });
         return idToGoods;
+    }
+
+    public FulfillmentOrderInfo renderDetail(FulfillmentOrderDetailRequest request) {
+        FulfillmentOrder byId = this.orderRepository.findById(request.getFulfillmentOrderId());
+        ParamUtil.nonExist(byId, "fulfillment.order", request.getFulfillmentOrderId());
+        return this.infoConverter.convert(byId);
     }
 }

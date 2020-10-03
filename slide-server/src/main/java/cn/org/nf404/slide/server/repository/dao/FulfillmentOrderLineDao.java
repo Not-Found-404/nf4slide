@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @author dx DingXing
  * @date 2020-09-29
@@ -13,4 +15,5 @@ import org.springframework.stereotype.Repository;
 public interface FulfillmentOrderLineDao extends JpaRepository<FulfillmentOrderLineDO, Long>, JpaSpecificationExecutor<FulfillmentOrderLineDO> {
 
 
+    List<FulfillmentOrderLineDO> findByFulfillmentOrderId(Long fulfillmentOrderId);
 }

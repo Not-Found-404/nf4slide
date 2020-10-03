@@ -23,7 +23,7 @@ public class FulfillmentOrderLine extends BaseModel implements Serializable {
 
     private Long quantity;
 
-    private OperateInfo operateInfo;
+    private OperateDesc operateDesc;
 
     private Goods goods;
 

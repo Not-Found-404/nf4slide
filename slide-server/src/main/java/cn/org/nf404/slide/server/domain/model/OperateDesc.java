@@ -10,7 +10,7 @@ import java.util.Date;
  * @date 2020-09-29
  */
 @Data
-public class OperateInfo implements Serializable {
+public class OperateDesc implements Serializable {
     private static final long serialVersionUID = -6573535173069881420L;
 
     private Date paidAt;

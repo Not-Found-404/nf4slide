@@ -26,7 +26,7 @@ public class FulfillmentOrder extends BaseModel implements Serializable {
 
     private Price price;
 
-    private OperateInfo operateInfo;
+    private OperateDesc operateDesc;
 
     private OrderStatus orderStatus;
 

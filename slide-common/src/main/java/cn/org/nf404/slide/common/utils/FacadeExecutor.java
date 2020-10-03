@@ -35,7 +35,7 @@ public final class FacadeExecutor {
     }
 
     private static <R, P> Response<R> logAndResponseFail(Throwable e, P param) {
-        log.error("failed to {} by {}, cause:{}", "", param, Throwables.getStackTraceAsString(e));
+        log.error("failed to {} by {}, cause:{}", param.getClass().getSimpleName(), param, Throwables.getStackTraceAsString(e));
         if (e instanceof IllegalArgumentException) {
             log.error("failed to execute:{}, error:{}", "", e.getMessage());
             return Response.fail(e.getMessage(), Response.ARGUMENT_ERROR);

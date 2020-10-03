@@ -26,6 +26,12 @@ public class ParamUtil {
         }
     }
 
+    public static void nonExist(Object o, String error, Object... params) throws IllegalArgumentException {
+        if (o == null) {
+            throw ServiceException.of(error + ".not.exist", params);
+        }
+    }
+
     public static void nonEmpty(Collection collection, String error) {
         if (collection == null || collection.size() == 0) {
             throw new ServiceException(error + ".not.be.empty");

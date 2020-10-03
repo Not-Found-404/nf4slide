@@ -51,17 +51,13 @@ public class UserWriteService {
     }
 
     public Long register(UserRegistryRequest request) {
-
-        this.addressReadService.findFullById(520000L);
-        return null;
-
         // TODO: 2020-09-28 check before save
-//        User toCreate = new User();
-//
-//        toCreate.setPhone(request.getPhone());
-//        toCreate.setPassword(request.getPassword());
-//        toCreate.setType(UserTypeEnum.USER);
-//
-//        return this.userRepository.save(toCreate).getId();
+        User toCreate = new User();
+
+        toCreate.setPhone(request.getPhone());
+        toCreate.setPassword(request.getPassword());
+        toCreate.setType(UserTypeEnum.USER);
+
+        return this.userRepository.save(toCreate).getId();
     }
 }
