@@ -7,6 +7,8 @@ import cn.org.nf404.slide.web.bean.converter.DtoConverter;
 import cn.org.nf404.slide.web.bean.dto.user.UserLoginRequestDTO;
 import cn.org.nf404.slide.web.bean.dto.user.UserRegisterRequestDTO;
 import cn.org.nf404.slide.web.component.login.UserLoginComponent;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,12 +22,14 @@ import javax.servlet.http.HttpServletRequest;
  */
 @RestController
 @AllArgsConstructor
+@Api(tags = "用户服务",value = "用户服务")
 public class UserRestEndpoint {
     private UserLoginComponent loginComponent;
     private UserFacade userFacade;
     private DtoConverter dtoConverter;
 
     @PostMapping("/api/user/login")
+    @ApiOperation("登录")
     public UserMetaData login(HttpServletRequest request, @RequestBody UserLoginRequestDTO dto) {
         return this.loginComponent.login(request, dto);
     }

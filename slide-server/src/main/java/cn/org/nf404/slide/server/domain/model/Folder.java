@@ -4,6 +4,8 @@ import cn.org.nf404.slide.common.model.domain.BaseModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.List;
+
 /**
  * 文件目录
  *
@@ -34,5 +36,15 @@ public class Folder extends BaseModel {
      * 父目录id
      */
     private Long pid;
+
+    /**
+     * 子目录
+     */
+    private List<Folder> children;
+
+    /**
+     * 目录下的幻灯片
+     */
+    private List<Slide> slides;
 
 }
