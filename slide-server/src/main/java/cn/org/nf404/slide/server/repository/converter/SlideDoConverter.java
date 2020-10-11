@@ -38,9 +38,7 @@ public interface SlideDoConverter {
      * @param user User
      * @return UserDO
      */
-    @Mapping(source = "tag", target = "tagJson")
     SlideDO model2Do(Slide user);
 
-    @Mapping(source = "tag", target = "tagJson")
     SlideContentDO model2Do(SlideContent content);
 }
