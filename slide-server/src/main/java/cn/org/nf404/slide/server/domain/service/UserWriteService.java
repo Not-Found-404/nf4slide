@@ -7,7 +7,7 @@ import cn.org.nf404.slide.api.response.user.UserMetaData;
 import cn.org.nf404.slide.api.response.user.UserThinResponse;
 import cn.org.nf404.slide.common.model.exception.ServiceException;
 import cn.org.nf404.slide.server.domain.model.User;
-import cn.org.nf404.slide.server.repository.UserRepository;
+import cn.org.nf404.slide.server.repository.impl.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

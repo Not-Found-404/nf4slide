@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.collect.Maps;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.util.StringUtils;
 
 import java.util.Map;
@@ -58,24 +59,12 @@ public class SlideContent extends BaseModel {
      */
     private Map<String, Object> config;
 
-    @JsonIgnore
-    private String configJson;
-
-    public void setConfig(Map<String, Object> config) {
-        this.config = config;
-        if (config == null || config.isEmpty()) {
-            this.configJson = null;
-        } else {
-            this.configJson = JsonHelper.toJson(config);
-        }
-    }
-
-    public void setConfigJson(String configJson) {
-        this.configJson = configJson;
-        if (!StringUtils.isEmpty(configJson)) {
-            config = JsonHelper.toMap(configJson);
-        } else {
-            config = Maps.newHashMap();
-        }
+    public static SlideContent init() {
+        SlideContent content = new SlideContent();
+        content.setVersion(0);
+        content.setContentText(Strings.EMPTY);
+        content.setContentType(SlideContentTypeEnum.TEXT);
+        content.setConfig(Maps.newHashMap());
+        return content;
     }
 }

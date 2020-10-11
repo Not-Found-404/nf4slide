@@ -1,4 +1,4 @@
-package cn.org.nf404.slide.server.repository;
+package cn.org.nf404.slide.server.repository.impl;
 
 import cn.org.nf404.slide.common.model.enums.ModelStatusEnum;
 import cn.org.nf404.slide.server.domain.model.User;

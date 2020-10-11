@@ -17,6 +17,8 @@ import java.util.Date;
  */
 @Data
 public abstract class BaseDO implements Serializable {
+    private static final long serialVersionUID = 5311141305133977631L;
+
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)

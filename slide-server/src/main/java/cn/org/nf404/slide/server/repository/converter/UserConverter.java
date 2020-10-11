@@ -30,7 +30,7 @@ public interface UserConverter {
      * @return UserDO
      */
     @Mapping(source = "tag", target = "tagJson")
-    @Mapping(source = "role", target = "tagJson")
-    @Mapping(source = "extra", target = "tagJson")
+    @Mapping(source = "role", target = "roleJson")
+    @Mapping(source = "extra", target = "extraJson")
     UserDO model2Do(User user);
 }

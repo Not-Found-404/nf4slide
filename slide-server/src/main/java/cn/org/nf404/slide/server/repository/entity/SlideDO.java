@@ -4,19 +4,18 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @author dx DingXing
- * @date 2020-09-28
+ * @date 2020-10-06
  */
-@Data
 @EqualsAndHashCode(callSuper = true)
+@Data
 @Entity
-@Table(name = "user")
-public class UserDO extends BaseDO implements Serializable {
-    private static final long serialVersionUID = -8531948139305993443L;
+@Table(name = "slide")
+public class SlideDO extends BaseDO {
+    private static final long serialVersionUID = 6592915757904354649L;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -24,58 +23,46 @@ public class UserDO extends BaseDO implements Serializable {
     private Long id;
 
     /**
-     * 昵称
+     * 文件库id
      */
-    @Column(name = "nickname")
-    private String nickname;
+    @Column(name = "library_id")
+    private Long libraryId;
 
     /**
-     * 邮箱
+     * 目录id
      */
-    @Column(name = "email")
-    private String email;
+    @Column(name = "folder_id")
+    private Long folderId;
 
     /**
-     * 手机号
-     */
-    @Column(name = "phone")
-    private String phone;
-
-    /**
-     * 密码
-     */
-    @Column(name = "password")
-    private String password;
-
-    /**
-     * 类型
-     */
-    @Column(name = "type")
-    private String type;
-
-    /**
-     * 头像
-     */
-    @Column(name = "avatar")
-    private String avatar;
-
-    /**
-     * 姓名
+     * 幻灯片名
      */
     @Column(name = "name")
     private String name;
 
     /**
-     * 角色
+     * 键鼠信息
      */
-    @Column(name = "role_json")
-    private String roleJson;
+    @Column(name = "description")
+    private String description;
 
     /**
-     * 标签
+     * 访问等级
      */
-    @Column(name = "tag_json")
-    private String tagJson;
+    @Column(name = "access_level")
+    private String accessLevel;
+
+    /**
+     * 乐观锁
+     */
+    @Column(name = "version")
+    private Integer version;
+
+    /**
+     * 编辑参与人
+     */
+    @Column(name = "authors")
+    private String authors;
 
     /**
      * 创建时间
@@ -100,4 +87,5 @@ public class UserDO extends BaseDO implements Serializable {
      */
     @Column(name = "extra_json")
     private String extraJson;
+
 }

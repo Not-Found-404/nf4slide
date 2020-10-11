@@ -1,14 +1,13 @@
 package cn.org.nf404.slide.server.domain.model;
 
+import cn.org.nf404.slide.api.enums.AccessLevelEnum;
 import cn.org.nf404.slide.common.model.domain.BaseModel;
-import com.google.common.base.Joiner;
 import com.google.common.collect.Sets;
+import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.apache.logging.log4j.util.Strings;
-import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -46,7 +45,7 @@ public class Slide extends BaseModel {
     /**
      * 访问等级
      */
-    private String accessLevel;
+    private AccessLevelEnum accessLevel;
 
     /**
      * 乐观锁
@@ -59,9 +58,24 @@ public class Slide extends BaseModel {
     private SlideContent content;
 
     /**
+     * 历史版本
+     */
+    private List<SlideContent> historyContent;
+
+    /**
      * 编辑参与人
      */
     private Set<String> authors;
+
+    public static Slide init(String name, Long creatorId, Long folderId) {
+        Slide slide = new Slide();
+        slide.setContent(SlideContent.init());
+        slide.setAccessLevel(AccessLevelEnum.NONE);
+        slide.setAuthors(Sets.newHashSet(creatorId.toString()));
+        slide.setFolderId(folderId);
+        slide.setName(name);
+        return slide;
+    }
 }
 
 
