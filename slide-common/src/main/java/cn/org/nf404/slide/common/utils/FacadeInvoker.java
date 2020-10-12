@@ -38,19 +38,19 @@ public final class FacadeInvoker {
         }
     }
 
-    public static <T extends AbstractRequest, R> R invoke(Function<T, Response<R>> facade, T request) {
+    public static <T extends AbstractRequest, R> R invoke(Function<T, Response<R>> function, T request) {
         try {
-            Response<R> apply = facade.apply(request);
+            Response<R> apply = function.apply(request);
             if (apply.isSuccess()) {
                 return apply.getResult();
             } else {
                 throw new RestException(apply.getError());
             }
         } catch (RestException e) {
-            log.error("failed to execute:{}, request:{}, error:{}", request.getOperationType().getDescription(), request, e.getMessage());
+            log.error("failed to execute:{}, \nrequest:{}, error:{}", request.getOperationType().getDescription(), JsonHelper.toJson(request), e.getMessage());
             throw e;
         } catch (Exception e) {
-            log.error("failed to execute:{}, request:{}, cause:{}", request.getOperationType().getDescription(), request, Throwables.getStackTraceAsString(e));
+            log.error("failed to execute:{}, \nrequest:{}, cause:{}", request.getOperationType().getDescription(), JsonHelper.toJson(request), Throwables.getStackTraceAsString(e));
             throw new RestException(e.getMessage());
         }
     }

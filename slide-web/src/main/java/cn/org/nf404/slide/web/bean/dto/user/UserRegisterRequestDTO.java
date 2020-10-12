@@ -1,5 +1,6 @@
 package cn.org.nf404.slide.web.bean.dto.user;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -9,8 +10,11 @@ import java.io.Serializable;
  * @author dx DingXing
  * @date 2020-09-28
  */
+@ApiModel("注册请求参数")
 @Data
 public class UserRegisterRequestDTO implements Serializable {
+    private static final long serialVersionUID = 3299532491631310585L;
+
     @ApiModelProperty("昵称")
     private String nickname;
 

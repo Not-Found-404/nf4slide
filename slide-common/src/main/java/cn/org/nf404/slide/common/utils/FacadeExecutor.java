@@ -30,7 +30,7 @@ public final class FacadeExecutor {
             if (param instanceof AbstractRequest) {
                 name = ((AbstractRequest) param).getOperationType().name();
             }
-            log.info("DUMP :{} over, cost:{}", name, elapsed);
+            log.info("DUMP :{} over, cost:{}ms", name, elapsed);
         }
     }
 
@@ -40,7 +40,7 @@ public final class FacadeExecutor {
             log.error("failed to execute:{}, error:{}", "", e.getMessage());
             return Response.fail(e.getMessage(), Response.ARGUMENT_ERROR);
         } else if (e instanceof ServiceException) {
-            log.error("failed to execute:{}, error:{}", "", ((ServiceException) e).getMessage());
+            log.error("failed to execute:{}, error:{}", "", e.getMessage());
             return Response.fail(e.getMessage(), Response.SERVICE_ERROR);
         } else {
             log.error("failed to execute:{}, cause:{}", "", Throwables.getStackTraceAsString(e));
