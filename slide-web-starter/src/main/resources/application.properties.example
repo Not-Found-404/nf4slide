@@ -1,0 +1,23 @@
+server.servlet.context-path=/
+server.port=8888
+
+# jpa设置
+spring.jpa.database=mysql
+# 属否展示SQL语句
+spring.jpa.show-sql=false
+# 是否自动建表
+spring.jpa.generate-ddl=true
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.jdbc.batch_size=5000
+spring.jpa.properties.hibernate.jdbc.batch_versioned_data=true
+spring.jpa.properties.hibernate.order_inserts=true
+spring.jpa.properties.hibernate.order_updates=true
+spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL55Dialect
+
+# 数据源配置
+master.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+master.datasource.jdbc-url=jdbc:mysql://${MYSQL_HOST:127.0.0.01}:${MYSQL_PORT:3306}/slide?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+master.datasource.username=${MYSQL_USERNAME:root}
+master.datasource.password=${MYSQL_PASSWORD:123456}
+master.datasource.maximum-pool-size=50
