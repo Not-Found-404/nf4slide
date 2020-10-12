@@ -12,7 +12,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * @author DingXing wildhunt_geralt@foxmail.com
- * @date 2019/2/25 下午1:11
+ * @since 2019/2/25 下午1:11
  */
 @EnableSwagger2
 @Configuration

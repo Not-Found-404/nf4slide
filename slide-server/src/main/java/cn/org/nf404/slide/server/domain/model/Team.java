@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
  * 团队
  *
  * @author dx DingXing
- * @date 2020-01-11
+ * @since 2020-01-11
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

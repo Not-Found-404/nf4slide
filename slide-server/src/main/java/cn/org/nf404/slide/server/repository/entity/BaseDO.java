@@ -13,7 +13,7 @@ import java.util.Date;
  * 基本do对象，相当于代码模板
  *
  * @author dx DingXing
- * @date 2020-09-28
+ * @since 2020-09-28
  */
 @Data
 public abstract class BaseDO implements Serializable {

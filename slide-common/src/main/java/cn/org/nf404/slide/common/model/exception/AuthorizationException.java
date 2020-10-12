@@ -2,7 +2,7 @@ package cn.org.nf404.slide.common.model.exception;
 
 /**
  * @author dx DingXing
- * @date 2020-01-01
+ * @since 2020-01-01
  */
 @SuppressWarnings("unused")
 public class AuthorizationException extends RuntimeException {

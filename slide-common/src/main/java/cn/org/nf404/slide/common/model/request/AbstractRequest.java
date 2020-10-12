@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
  * @author DingXing wildhunt_geralt@foxmail.com
- * @date 2019/2/25 下午1:40
+ * @since 2019/2/25 下午1:40
  */
 @SuppressWarnings("unused")
 public abstract class AbstractRequest {

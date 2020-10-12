@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  * @author DingXing wildhunt_geralt@foxmail.com
- * @date 2019/4/18
+ * @since 2019/4/18
  */
 @ApiModel("读取redis参数")
 @Data

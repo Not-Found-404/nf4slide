@@ -17,7 +17,7 @@ import static cn.org.nf404.slide.web.bean.constants.UserLoginConstant.USER_LOGIN
 
 /**
  * @author dx DingXing
- * @date 2020-09-28
+ * @since 2020-09-28
  */
 @Component
 @AllArgsConstructor

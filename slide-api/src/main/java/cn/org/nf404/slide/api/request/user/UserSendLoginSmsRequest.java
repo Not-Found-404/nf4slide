@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
  * @author DingXing wildhunt_geralt@foxmail.com
- * @date 2019/3/17 上午12:05
+ * @since 2019/3/17 上午12:05
  */
 @ApiModel("发送登录验证短信")
 @Data

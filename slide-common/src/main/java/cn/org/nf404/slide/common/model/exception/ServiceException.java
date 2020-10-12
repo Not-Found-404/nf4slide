@@ -4,7 +4,7 @@ import lombok.Getter;
 
 /**
  * @author dx DingXing
- * @date 2020-01-01
+ * @since 2020-01-01
  */
 @SuppressWarnings("unused")
 @Getter

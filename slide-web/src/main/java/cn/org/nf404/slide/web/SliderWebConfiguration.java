@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
  * @author dx DingXing
- * @date 2020-01-03
+ * @since 2020-01-03
  */
 @Configuration
 @ComponentScan

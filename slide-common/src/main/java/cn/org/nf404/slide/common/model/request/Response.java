@@ -8,7 +8,7 @@ import java.io.Serializable;
  * 基础Response类
  *
  * @author dx DingXing
- * @date 2020-01-01
+ * @since 2020-01-01
  */
 @Data
 @SuppressWarnings("unused")

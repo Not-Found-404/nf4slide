@@ -12,7 +12,7 @@ import java.io.Serializable;
 
 /**
  * @author dx DingXing
- * @date 2020.1.22
+ * @since 2020.1.22
  */
 @ApiModel("注册")
 @Data

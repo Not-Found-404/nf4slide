@@ -16,7 +16,7 @@ import java.util.Map;
  * 幻灯片内容
  *
  * @author dx DingXing
- * @date 2020-01-11
+ * @since 2020-01-11
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author dx DingXing
- * @date 2020-01-03
+ * @since 2020-01-03
  */
 @Slf4j
 @SpringBootApplication

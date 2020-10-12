@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  * @author DingXing wildhunt_geralt@foxmail.com
- * @date 2019/6/7
+ * @since 2019/6/7
  */
 @ApiModel("注销请求")
 @Data

@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.Date;
 /**
  * @author ghy ArcryGe
- * @date 2020/10/11 16:05
+ * @since 2020/10/11 16:05
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

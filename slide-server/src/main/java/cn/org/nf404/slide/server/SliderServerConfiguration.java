@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @author dx DingXing
- * @date 2020-01-03
+ * @since 2020-01-03
  */
 @ComponentScan
 @Configuration

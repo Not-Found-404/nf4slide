@@ -9,7 +9,7 @@ import cn.org.nf404.slide.common.model.request.Response;
 
 /**
  * @author dx DingXing
- * @date 2020-01-22
+ * @since 2020-01-22
  */
 @SuppressWarnings("unused")
 public interface UserFacade {

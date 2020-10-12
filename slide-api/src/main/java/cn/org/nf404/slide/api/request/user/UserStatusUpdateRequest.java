@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
  * @author DingXing wildhunt_geralt@foxmail.com
- * @date 2019/3/16 下午5:07
+ * @since 2019/3/16 下午5:07
  */
 @ApiModel("用户禁用启用")
 @Data

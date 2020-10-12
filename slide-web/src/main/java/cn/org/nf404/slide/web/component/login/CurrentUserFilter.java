@@ -20,7 +20,7 @@ import static cn.org.nf404.slide.web.component.login.RequestContext.setUuid;
 
 /**
  * @author DingXing wildhunt_geralt@foxmail.com
- * @date 2019/4/18
+ * @since 2019/4/18
  */
 @Component
 @Slf4j

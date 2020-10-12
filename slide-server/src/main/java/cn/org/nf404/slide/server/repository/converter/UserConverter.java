@@ -7,7 +7,7 @@ import org.mapstruct.Mapping;
 
 /**
  * @author dx DingXing
- * @date 2020-09-28
+ * @since 2020-09-28
  */
 @Mapper(componentModel = "spring", uses = JsonConverter.class)
 public interface UserConverter {

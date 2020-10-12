@@ -15,7 +15,7 @@ import java.util.Map;
  * 基础model类
  *
  * @author dx DingXing
- * @date 2020-01-01
+ * @since 2020-01-01
  */
 @SuppressWarnings("unused")
 @Data

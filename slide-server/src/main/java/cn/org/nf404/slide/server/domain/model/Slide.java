@@ -14,7 +14,7 @@ import java.util.Set;
  * 幻灯片model
  *
  * @author dx DingXing
- * @date 2020-01-11
+ * @since 2020-01-11
  */
 @Data
 @SuppressWarnings("unused")

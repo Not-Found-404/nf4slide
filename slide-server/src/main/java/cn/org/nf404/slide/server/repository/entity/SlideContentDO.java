@@ -8,7 +8,7 @@ import java.util.Date;
 
 /**
  * @author dx DingXing
- * @date 2020-10-06
+ * @since 2020-10-06
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

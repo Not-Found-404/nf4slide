@@ -8,7 +8,7 @@ import org.mapstruct.Mapping;
 /**
  * @author ghy ArcryGe
  * @version 1.0
- * @date 2020/10/11 16:05
+ * @since 2020/10/11 16:05
  */
 @Mapper(componentModel = "spring", uses = JsonConverter.class)
 public interface FolderDoConverter {

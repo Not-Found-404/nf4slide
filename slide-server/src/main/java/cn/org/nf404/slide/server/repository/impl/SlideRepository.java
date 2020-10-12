@@ -20,7 +20,7 @@ import java.util.Optional;
 
 /**
  * @author dx DingXing
- * @date 2020-10-06
+ * @since 2020-10-06
  */
 @Repository
 @AllArgsConstructor
@@ -30,21 +30,22 @@ public class SlideRepository {
     private final SlideDoConverter doConverter;
 
     @Transactional(rollbackFor = Exception.class)
-    public void create(Slide toSave) {
+    public Long create(Slide toSave) {
         if (null == toSave) {
-            return;
+            return null;
         }
 
         SlideDO slideDO = this.doConverter.model2Do(toSave);
-        this.slideDao.save(slideDO);
+        SlideDO save = this.slideDao.save(slideDO);
 
         SlideContentDO contentDO = this.doConverter.model2Do(toSave.getContent());
         if (null != contentDO) {
             this.contentDao.save(contentDO);
         }
+        return save.getId();
     }
 
-    public Slide deatil(Long slideId) {
+    public Slide findById(Long slideId) {
         if (null == slideId) {
             return null;
         }

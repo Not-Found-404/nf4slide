@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * @author dx DingXing
- * @date 2020-10-06
+ * @since 2020-10-06
  */
 @Repository
 public interface SlideDao extends JpaRepository<SlideDO, Long>, JpaSpecificationExecutor<SlideDO> {

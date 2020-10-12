@@ -16,7 +16,7 @@ import java.util.function.Function;
  * 基础model类
  *
  * @author dx DingXing
- * @date 2020-01-01
+ * @since 2020-01-01
  */
 @Slf4j
 @SuppressWarnings("unused")

@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 
 /**
  * @author dx DingXing
- * @date 2020-09-28
+ * @since 2020-09-28
  */
 @Mapper(componentModel = "spring")
 public interface DtoConverter {

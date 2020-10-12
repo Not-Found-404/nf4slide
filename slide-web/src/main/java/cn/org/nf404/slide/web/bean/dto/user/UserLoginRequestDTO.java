@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
  * @author dx DingXing
- * @date 2020-09-28
+ * @since 2020-09-28
  */
 @Data
 @ApiModel("登录信息")

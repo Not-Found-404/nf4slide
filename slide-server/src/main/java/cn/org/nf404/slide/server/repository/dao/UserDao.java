@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * @author dx DingXing
- * @date 2020-09-28
+ * @since 2020-09-28
  */
 @Repository
 public interface UserDao extends JpaRepository<UserDO, Long>, JpaSpecificationExecutor<UserDO> {
