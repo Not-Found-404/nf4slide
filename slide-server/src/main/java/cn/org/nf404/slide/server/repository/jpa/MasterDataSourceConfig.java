@@ -1,5 +1,6 @@
 package cn.org.nf404.slide.server.repository.jpa;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
@@ -30,9 +31,9 @@ import javax.sql.DataSource;
         transactionManagerRef = "masterTransactionManager", //配置 事物管理器  transactionManager
         basePackages = {"cn.org.nf404.slide.server.repository.dao"}
 )
+@AllArgsConstructor
 public class MasterDataSourceConfig {
-    @Autowired
-    private JpaProperties jpaProperties;
+    private final JpaProperties jpaProperties;
 
     @Bean("masterDataSource")
     @Primary
