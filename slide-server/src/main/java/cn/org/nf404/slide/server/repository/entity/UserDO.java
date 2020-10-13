@@ -14,7 +14,9 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = "user")
+@Table(name = "user",
+        indexes = {@Index(name = "idx_phone", columnList = "phone")}
+)
 public class UserDO extends BaseDO implements Serializable {
     private static final long serialVersionUID = -8531948139305993443L;
 

@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.util.Date;
+
 /**
  * @author ghy ArcryGe
  * @since 2020/10/11 16:05
@@ -12,8 +13,12 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@Table(name = "folder")
-public class FolderDO extends BaseDO{
+@Table(name = "folder", indexes = {
+        @Index(name = "idx_library_id", columnList = "library_id"),
+        @Index(name = "idx_pid", columnList = "pid")}
+)
+public class FolderDO extends BaseDO {
+    private static final long serialVersionUID = 7378941016382670038L;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -23,7 +28,7 @@ public class FolderDO extends BaseDO{
     /**
      * 层级
      */
-    @Column(name = "level",nullable = false)
+    @Column(name = "level", nullable = false)
     private Integer level;
 
     /**
@@ -35,13 +40,13 @@ public class FolderDO extends BaseDO{
     /**
      * 目录名
      */
-    @Column(name = "name",nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
     /**
      * 父目录id
      */
-    @Column(name = "pid",nullable = false)
+    @Column(name = "pid", nullable = false)
     private Long pid;
 
     /**

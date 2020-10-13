@@ -13,7 +13,10 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@Table(name = "slide")
+@Table(name = "slide", indexes = {
+        @Index(name = "idx_library_id", columnList = "library_id"),
+        @Index(name = "idx_folder_id", columnList = "folder_id")}
+)
 public class SlideDO extends BaseDO {
     private static final long serialVersionUID = 6592915757904354649L;
 
