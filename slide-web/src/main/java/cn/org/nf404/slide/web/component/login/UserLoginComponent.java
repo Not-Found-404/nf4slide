@@ -3,7 +3,7 @@ package cn.org.nf404.slide.web.component.login;
 import cn.org.nf404.slide.api.facade.UserFacade;
 import cn.org.nf404.slide.api.request.user.UserLoginRequest;
 import cn.org.nf404.slide.api.response.user.UserMetaData;
-import cn.org.nf404.slide.common.utils.FacadeInvoker;
+import cn.org.nf404.slide.web.aop.FacadeInvoker;
 import cn.org.nf404.slide.common.utils.JsonHelper;
 import cn.org.nf404.slide.web.bean.dto.user.UserLoginRequestDTO;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import static cn.org.nf404.slide.common.utils.FacadeInvoker.invoke;
+import static cn.org.nf404.slide.web.aop.FacadeInvoker.invoke;
 import static cn.org.nf404.slide.web.bean.constants.UserLoginConstant.USER_LOGIN_KEY;
 
 /**

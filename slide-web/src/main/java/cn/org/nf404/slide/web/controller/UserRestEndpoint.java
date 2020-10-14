@@ -2,7 +2,7 @@ package cn.org.nf404.slide.web.controller;
 
 import cn.org.nf404.slide.api.facade.UserFacade;
 import cn.org.nf404.slide.api.response.user.UserMetaData;
-import cn.org.nf404.slide.common.utils.FacadeInvoker;
+import cn.org.nf404.slide.web.aop.FacadeInvoker;
 import cn.org.nf404.slide.web.bean.converter.DtoConverter;
 import cn.org.nf404.slide.web.bean.dto.user.UserLoginRequestDTO;
 import cn.org.nf404.slide.web.bean.dto.user.UserRegisterRequestDTO;
