@@ -1,5 +1,6 @@
 package cn.org.nf404.slide.server.repository.entity;
 
+import cn.org.nf404.slide.common.model.enums.ModelStatusEnum;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -47,4 +48,13 @@ public abstract class BaseDO implements Serializable {
      */
     @Column(name = "extra_json")
     private String extraJson;
+
+    public static void init(BaseDO baseDO) {
+        if (null == baseDO) {
+            return;
+        }
+        baseDO.setUpdatedAt(new Date());
+        baseDO.setStatus(ModelStatusEnum.INIT.toString());
+        baseDO.setCreatedAt(new Date());
+    }
 }

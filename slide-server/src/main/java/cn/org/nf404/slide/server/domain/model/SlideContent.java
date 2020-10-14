@@ -2,13 +2,10 @@ package cn.org.nf404.slide.server.domain.model;
 
 import cn.org.nf404.slide.api.enums.SlideContentTypeEnum;
 import cn.org.nf404.slide.common.model.domain.BaseModel;
-import cn.org.nf404.slide.common.utils.JsonHelper;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.collect.Maps;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.apache.logging.log4j.util.Strings;
-import org.springframework.util.StringUtils;
 
 import java.util.Map;
 
@@ -57,9 +54,9 @@ public class SlideContent extends BaseModel {
     /**
      * 额外配置
      */
-    private Map<String, Object> config;
+    private Map<String, String> config;
 
-    public static SlideContent init() {
+    static SlideContent init() {
         SlideContent content = new SlideContent();
         content.setVersion(0);
         content.setContentText(Strings.EMPTY);

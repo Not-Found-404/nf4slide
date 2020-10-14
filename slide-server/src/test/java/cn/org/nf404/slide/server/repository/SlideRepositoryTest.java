@@ -18,10 +18,10 @@ public class SlideRepositoryTest extends BaseTest {
     @Test
     public void init() {
         Slide slide = this.random.nextObject(Slide.class);
-        Long slideId = this.slideRepository.create(slide);
-        assert slideId != null;
+        slide = this.slideRepository.create(slide);
+        assert slide != null;
 
-        Slide findById = this.slideRepository.findById(slideId);
+        Slide findById = this.slideRepository.findById(slide.getId());
         assert findById != null;
     }
 }

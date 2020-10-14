@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.Map;
 
 /**
- * 基础model类
+ * Basic data object
  *
  * @author dx DingXing
  * @since 2020-01-01
@@ -46,28 +46,4 @@ public abstract class BaseModel implements Serializable {
      * 额外信息的map存储
      */
     private Map<String, Object> extra;
-
-    /**
-     * 额外信息
-     */
-    @JsonIgnore
-    private String extraJson;
-
-    public void setExtra(Map<String, Object> extra) {
-        this.extra = extra;
-        if (extra == null || extra.isEmpty()) {
-            this.extraJson = null;
-        } else {
-            this.extraJson = JsonHelper.toJson(extra);
-        }
-    }
-
-    public void setExtraJson(String extraJson) {
-        this.extraJson = extraJson;
-        if (!StringUtils.isEmpty(extraJson)) {
-            extra = JsonHelper.toMap(extraJson);
-        } else {
-            extra = Maps.newHashMap();
-        }
-    }
 }

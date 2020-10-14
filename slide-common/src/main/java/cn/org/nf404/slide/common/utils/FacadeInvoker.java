@@ -7,6 +7,7 @@ import cn.org.nf404.slide.common.model.exception.ServiceException;
 import cn.org.nf404.slide.common.model.request.AbstractRequest;
 import cn.org.nf404.slide.common.model.request.Response;
 import com.google.common.base.Throwables;
+import com.sun.xml.internal.ws.client.RequestContext;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Objects;

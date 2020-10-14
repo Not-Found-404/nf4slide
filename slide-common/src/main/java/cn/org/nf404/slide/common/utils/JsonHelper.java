@@ -48,6 +48,9 @@ public class JsonHelper {
     }
 
     private String innerToJson(Object o) {
+        if (null == o) {
+            return null;
+        }
         try {
             return this.mapper.writeValueAsString(o);
         } catch (Exception e) {
@@ -108,9 +111,9 @@ public class JsonHelper {
     /**
      * json string to object
      *
-     * @param json  json string
+     * @param json           json string
      * @param tTypeReference class
-     * @param <T>   class
+     * @param <T>            class
      * @return instance of class
      */
     public static <T> T toObject(String json, TypeReference<T> tTypeReference) {
