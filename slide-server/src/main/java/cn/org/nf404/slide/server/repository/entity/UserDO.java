@@ -40,7 +40,7 @@ public class UserDO extends BaseDO implements Serializable {
     /**
      * 手机号
      */
-    @Column(name = "phone")
+    @Column(name = "phone", columnDefinition = "varchar(20) not null")
     private String phone;
 
     /**
