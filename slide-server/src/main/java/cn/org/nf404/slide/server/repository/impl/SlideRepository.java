@@ -8,6 +8,9 @@ import cn.org.nf404.slide.server.repository.dao.SlideDao;
 import cn.org.nf404.slide.server.repository.entity.BaseDO;
 import cn.org.nf404.slide.server.repository.entity.SlideContentDO;
 import cn.org.nf404.slide.server.repository.entity.SlideDO;
+import com.alicp.jetcache.anno.CacheInvalidate;
+import com.alicp.jetcache.anno.CacheType;
+import com.alicp.jetcache.anno.Cached;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
@@ -53,6 +56,7 @@ public class SlideRepository {
         return this.doConverter.do2Model(save);
     }
 
+    @Cached(name = "nf4-slide-", key = "#slideId", expire = 3600, cacheType = CacheType.REMOTE)
     public Slide findById(Long slideId) {
         if (null == slideId) {
             return null;
@@ -78,6 +82,7 @@ public class SlideRepository {
     }
 
     @Transactional(rollbackFor = Exception.class)
+    @CacheInvalidate(name = "nf4-slide-", key = "#slide.id")
     public Slide update(Slide slide) {
         SlideDO slideDO = this.doConverter.model2Do(slide);
         slideDO.setUpdatedAt(new Date());

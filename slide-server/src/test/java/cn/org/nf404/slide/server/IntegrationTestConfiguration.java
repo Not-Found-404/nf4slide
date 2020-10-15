@@ -1,5 +1,7 @@
 package cn.org.nf404.slide.server;
 
+import com.alicp.jetcache.anno.config.EnableCreateCacheAnnotation;
+import com.alicp.jetcache.anno.config.EnableMethodCache;
 import io.github.benas.randombeans.EnhancedRandomBuilder;
 import io.github.benas.randombeans.api.EnhancedRandom;
 import io.github.benas.randombeans.api.Randomizer;
@@ -19,6 +21,8 @@ import java.util.Random;
 @EnableAutoConfiguration
 @Configuration
 @ComponentScan
+@EnableMethodCache(basePackages = "cn.org.nf404.slide.server.repository")
+@EnableCreateCacheAnnotation
 public class IntegrationTestConfiguration {
     @Bean
     public EnhancedRandom randomBean() {

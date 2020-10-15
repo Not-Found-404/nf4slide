@@ -25,7 +25,6 @@ master.datasource.maximum-pool-size=50
 # jetCache缓存配置
 jetcache.statIntervalMinutes=15
 jetcache.areaInCacheName=false
-jetcache.hiddenPackages=io.terminus
 jetcache.local.default.type=guava
 jetcache.local.default.keyConvertor=fastjson
 jetcache.local.default.limit=1000
@@ -34,10 +33,11 @@ jetcache.remote.default.type=redis
 jetcache.remote.default.keyConvertor=fastjson
 jetcache.remote.default.limit=1000
 jetcache.remote.default.expireAfterWriteInMillis=3600000
-jetcache.remote.default.host=${redis.host}
-jetcache.remote.default.port=${redis.port}
-jetcache.remote.default.password=${redis.password}
-jetcache.remote.default.database=${redis.database}
+jetcache.remote.default.host=${redis.host:127.0.0.1}
+jetcache.remote.default.port=${redis.port:6379}
+# 密码和db根据实际情况来，没有就不填
+# jetcache.remote.default.password=${redis.password:}
+# jetcache.remote.default.database=${redis.database:}
 jetcache.remote.default.poolconfig.maxTotal=50
 jetcache.remote.default.poolconfig.maxIdle=20
 jetcache.remote.default.poolconfig.minIdle=5

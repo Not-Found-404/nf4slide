@@ -1,5 +1,7 @@
 package cn.org.nf404.slide.web;
 
+import com.alicp.jetcache.anno.config.EnableCreateCacheAnnotation;
+import com.alicp.jetcache.anno.config.EnableMethodCache;
 import com.google.common.base.Throwables;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -11,6 +13,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @Slf4j
 @SpringBootApplication
+@EnableMethodCache(basePackages = "cn.org.nf404.slide.server.repository")
+@EnableCreateCacheAnnotation
 public class SlideWebApplication {
     public static void main(String[] args) {
         try {
