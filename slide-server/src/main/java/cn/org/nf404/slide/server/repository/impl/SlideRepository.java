@@ -1,8 +1,10 @@
 package cn.org.nf404.slide.server.repository.impl;
 
+import cn.org.nf404.slide.api.response.slide.SlideInfo;
 import cn.org.nf404.slide.server.domain.model.Slide;
 import cn.org.nf404.slide.server.domain.model.SlideContent;
 import cn.org.nf404.slide.server.repository.converter.DoConverter;
+import cn.org.nf404.slide.server.repository.criteria.SlideQueryCriteria;
 import cn.org.nf404.slide.server.repository.dao.SlideContentDao;
 import cn.org.nf404.slide.server.repository.dao.SlideDao;
 import cn.org.nf404.slide.server.repository.entity.BaseDO;
@@ -11,6 +13,7 @@ import cn.org.nf404.slide.server.repository.entity.SlideDO;
 import com.alicp.jetcache.anno.CacheInvalidate;
 import com.alicp.jetcache.anno.CacheType;
 import com.alicp.jetcache.anno.Cached;
+import com.google.common.collect.Lists;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
@@ -18,10 +21,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.criteria.Predicate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author dx DingXing
@@ -96,5 +97,23 @@ public class SlideRepository {
         }
 
         return slide;
+    }
+
+    public List<Slide> query(SlideQueryCriteria criteria) {
+        if (null == criteria || criteria.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        Specification<SlideDO> specification = Specification.where((Specification<SlideDO>) (root, cq, cb) -> {
+            List<Predicate> list = new ArrayList<>();
+            if (null != criteria.getFolderId()) {
+                list.add(cb.equal(root.<Long>get("folderId"), criteria.getFolderId()));
+            }
+            return cq.where(list.toArray(new Predicate[0])).getRestriction();
+        });
+
+        return this.slideDao.findAll(specification).stream()
+                .map(this.doConverter::convert)
+                .collect(Collectors.toList());
     }
 }

@@ -3,6 +3,7 @@ package cn.org.nf404.slide.server.facade;
 import cn.org.nf404.slide.api.facade.SlideFacade;
 import cn.org.nf404.slide.api.request.slide.SlideCreateRequest;
 import cn.org.nf404.slide.api.request.slide.SlideRenderDetailRequest;
+import cn.org.nf404.slide.api.request.slide.SlideRenderQueryRequest;
 import cn.org.nf404.slide.api.request.slide.SlideUpdateRequest;
 import cn.org.nf404.slide.api.response.slide.SlideInfo;
 import cn.org.nf404.slide.common.model.request.Response;
@@ -11,6 +12,8 @@ import cn.org.nf404.slide.server.domain.service.SlideWriteService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 import static cn.org.nf404.slide.common.utils.FacadeExecutor.execute;
 
@@ -38,5 +41,10 @@ public class SlideFacadeImpl implements SlideFacade {
     @Override
     public Response<SlideInfo> renderDetail(SlideRenderDetailRequest request) {
         return execute(request, this.slideReadService::renderDetail);
+    }
+
+    @Override
+    public Response<List<SlideInfo>> query(SlideRenderQueryRequest request) {
+        return execute(request, this.slideReadService::query);
     }
 }

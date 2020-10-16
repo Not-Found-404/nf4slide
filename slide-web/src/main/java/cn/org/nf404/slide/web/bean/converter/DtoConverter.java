@@ -2,10 +2,12 @@ package cn.org.nf404.slide.web.bean.converter;
 
 import cn.org.nf404.slide.api.request.slide.SlideCreateRequest;
 import cn.org.nf404.slide.api.request.slide.SlideRenderDetailRequest;
+import cn.org.nf404.slide.api.request.slide.SlideRenderQueryRequest;
 import cn.org.nf404.slide.api.request.slide.SlideUpdateRequest;
 import cn.org.nf404.slide.api.request.user.UserRegistryRequest;
 import cn.org.nf404.slide.web.bean.dto.slide.SlideCreateRequestDTO;
 import cn.org.nf404.slide.web.bean.dto.slide.SlideRenderDetailRequestDTO;
+import cn.org.nf404.slide.web.bean.dto.slide.SlideRenderQueryRequestDTO;
 import cn.org.nf404.slide.web.bean.dto.slide.SlideUpdateRequestDTO;
 import cn.org.nf404.slide.web.bean.dto.user.UserRegisterRequestDTO;
 import org.mapstruct.Mapper;
@@ -49,4 +51,12 @@ public interface DtoConverter {
      * @return SlideRenderDetailRequest
      */
     SlideRenderDetailRequest convert(SlideRenderDetailRequestDTO requestDTO);
+
+    /**
+     * Dto to request
+     *
+     * @param requestDTO SlideRenderQueryRequestDTO
+     * @return SlideRenderQueryRequest
+     */
+    SlideRenderQueryRequest convert(SlideRenderQueryRequestDTO requestDTO);
 }

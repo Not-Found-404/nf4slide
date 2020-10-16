@@ -3,6 +3,7 @@ package cn.org.nf404.slide.common.utils;
 import cn.org.nf404.slide.common.model.exception.ServiceException;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
  * @author dx DingXing
