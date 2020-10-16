@@ -6,12 +6,10 @@ import cn.org.nf404.slide.api.request.slide.SlideRenderDetailRequest;
 import cn.org.nf404.slide.api.request.slide.SlideUpdateRequest;
 import cn.org.nf404.slide.api.response.slide.SlideInfo;
 import cn.org.nf404.slide.common.model.request.Response;
-import cn.org.nf404.slide.common.utils.FacadeExecutor;
 import cn.org.nf404.slide.server.domain.service.SlideReadService;
 import cn.org.nf404.slide.server.domain.service.SlideWriteService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import static cn.org.nf404.slide.common.utils.FacadeExecutor.execute;

@@ -25,6 +25,6 @@ public class SlideReadService {
         Long slideId = request.getSlideId();
         Slide slide = this.slideRepository.findById(slideId);
         AssertUtil.nonExist(slide, "slide", slideId);
-        return this.converter.model2Info(slide);
+        return this.converter.convert(slide);
     }
 }

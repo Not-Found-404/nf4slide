@@ -29,7 +29,7 @@ public class SlideWriteService {
         Slide toCreateSlide = Slide.init(request.getSlideName(), request.getCreatorId(), request.getFolderId());
 
         Slide slide = this.slideRepository.create(toCreateSlide);
-        return converter.model2Info(slide);
+        return converter.convert(slide);
     }
 
     public SlideInfo update(SlideUpdateRequest request) {
@@ -38,8 +38,8 @@ public class SlideWriteService {
         // TODO: 2020-10-14 Check permissions
         if (null != request.getSlideName()) {
             slide.setName(request.getSlideName());
-            slide.getAuthors().add(request.getUpdateBy().toString());
         }
+        slide.getAuthors().add(request.getUpdateBy().toString());
         if (request.updateContent()) {
 
             SlideContent content = slide.getContent();
@@ -55,6 +55,6 @@ public class SlideWriteService {
             slide.setContent(null);
         }
 
-        return this.converter.model2Info(this.slideRepository.update(slide));
+        return this.converter.convert(this.slideRepository.update(slide));
     }
 }

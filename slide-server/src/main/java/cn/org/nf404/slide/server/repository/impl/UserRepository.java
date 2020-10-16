@@ -2,7 +2,7 @@ package cn.org.nf404.slide.server.repository.impl;
 
 import cn.org.nf404.slide.common.model.enums.ModelStatusEnum;
 import cn.org.nf404.slide.server.domain.model.User;
-import cn.org.nf404.slide.server.repository.converter.UserConverter;
+import cn.org.nf404.slide.server.repository.converter.DoConverter;
 import cn.org.nf404.slide.server.repository.dao.UserDao;
 import cn.org.nf404.slide.server.repository.entity.UserDO;
 import lombok.AllArgsConstructor;
@@ -24,15 +24,15 @@ import java.util.Optional;
 public class UserRepository {
     private final UserDao userDao;
 
-    private final UserConverter converter;
+    private final DoConverter converter;
 
     public User save(User user) {
-        UserDO userDO = converter.model2Do(user);
+        UserDO userDO = converter.convert(user);
         userDO.setCreatedAt(new Date());
         userDO.setUpdatedAt(new Date());
         userDO.setStatus(ModelStatusEnum.INIT.name());
 
-        return converter.do2Model(this.userDao.save(userDO));
+        return converter.convert(this.userDao.save(userDO));
     }
 
     public User findByPhoneAndPass(String phone, String password) {
@@ -46,6 +46,6 @@ public class UserRepository {
 
 
         Optional<UserDO> one = userDao.findOne(specification);
-        return converter.do2Model(one.orElse(null));
+        return converter.convert(one.orElse(null));
     }
 }

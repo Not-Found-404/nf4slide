@@ -4,7 +4,6 @@ import cn.org.nf404.slide.api.request.slide.SlideCreateRequest;
 import cn.org.nf404.slide.api.request.slide.SlideRenderDetailRequest;
 import cn.org.nf404.slide.api.request.slide.SlideUpdateRequest;
 import cn.org.nf404.slide.api.response.slide.SlideInfo;
-import cn.org.nf404.slide.common.model.request.AbstractRequest;
 import cn.org.nf404.slide.common.model.request.Response;
 
 /**

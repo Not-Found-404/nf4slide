@@ -25,6 +25,7 @@
     </dependencies>
 
     <build>
+        <finalName>slide-web-starter</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

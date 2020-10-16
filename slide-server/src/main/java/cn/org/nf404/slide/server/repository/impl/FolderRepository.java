@@ -1,7 +1,7 @@
 package cn.org.nf404.slide.server.repository.impl;
 
 import cn.org.nf404.slide.server.domain.model.Folder;
-import cn.org.nf404.slide.server.repository.converter.FolderDoConverter;
+import cn.org.nf404.slide.server.repository.converter.DoConverter;
 import cn.org.nf404.slide.server.repository.dao.FolderDao;
 import cn.org.nf404.slide.server.repository.entity.FolderDO;
 import lombok.AllArgsConstructor;
@@ -18,16 +18,16 @@ import java.util.Optional;
 @AllArgsConstructor
 public class FolderRepository {
     private final FolderDao folderDao;
-    private final FolderDoConverter folderDoConverter;
+    private final DoConverter folderDoConverter;
 
-    public Folder findById(Long id){
+    public Folder findById(Long id) {
         Optional<FolderDO> byId = this.folderDao.findById(id);
         FolderDO folderDO = byId.orElse(null);
-        return this.folderDoConverter.do2Model(folderDO);
+        return this.folderDoConverter.convert(folderDO);
     }
 
     public void creat(Folder folder) {
-        FolderDO folderDO=this.folderDoConverter.moder2Do(folder);
+        FolderDO folderDO = this.folderDoConverter.convert(folder);
         this.folderDao.save(folderDO);
     }
 

@@ -2,7 +2,7 @@ package cn.org.nf404.slide.server.repository.impl;
 
 import cn.org.nf404.slide.server.domain.model.Slide;
 import cn.org.nf404.slide.server.domain.model.SlideContent;
-import cn.org.nf404.slide.server.repository.converter.SlideDoConverter;
+import cn.org.nf404.slide.server.repository.converter.DoConverter;
 import cn.org.nf404.slide.server.repository.dao.SlideContentDao;
 import cn.org.nf404.slide.server.repository.dao.SlideDao;
 import cn.org.nf404.slide.server.repository.entity.BaseDO;
@@ -32,7 +32,7 @@ import java.util.Optional;
 public class SlideRepository {
     private final SlideDao slideDao;
     private final SlideContentDao contentDao;
-    private final SlideDoConverter doConverter;
+    private final DoConverter doConverter;
 
     @Transactional(rollbackFor = Exception.class)
     public Slide create(Slide toSave) {
@@ -41,19 +41,19 @@ public class SlideRepository {
         }
 
         // Persist slide
-        SlideDO slideDO = this.doConverter.model2Do(toSave);
+        SlideDO slideDO = this.doConverter.convert(toSave);
         BaseDO.init(slideDO);
         SlideDO save = this.slideDao.save(slideDO);
 
         // Persist slide content
-        SlideContentDO contentDO = this.doConverter.model2Do(toSave.getContent());
+        SlideContentDO contentDO = this.doConverter.convert(toSave.getContent());
         if (null != contentDO) {
             BaseDO.init(contentDO);
             contentDO.setSlideId(save.getId());
             this.contentDao.save(contentDO);
         }
 
-        return this.doConverter.do2Model(save);
+        return this.doConverter.convert(save);
     }
 
     @Cached(name = "nf4-slide-", key = "#slideId", expire = 3600, cacheType = CacheType.REMOTE)
@@ -62,7 +62,7 @@ public class SlideRepository {
             return null;
         }
         Optional<SlideDO> byId = this.slideDao.findById(slideId);
-        Slide slide = this.doConverter.do2Model(byId.orElse(null));
+        Slide slide = this.doConverter.convert(byId.orElse(null));
         if (null == slide) {
             return null;
         }
@@ -74,7 +74,7 @@ public class SlideRepository {
         });
 
         SlideContent last = this.contentDao.findAll(specification, Sort.by("version")).stream()
-                .map(this.doConverter::do2Model)
+                .map(this.doConverter::convert)
                 .findFirst().orElse(null);
         slide.setContent(last);
 
@@ -84,13 +84,13 @@ public class SlideRepository {
     @Transactional(rollbackFor = Exception.class)
     @CacheInvalidate(name = "nf4-slide-", key = "#slide.id")
     public Slide update(Slide slide) {
-        SlideDO slideDO = this.doConverter.model2Do(slide);
+        SlideDO slideDO = this.doConverter.convert(slide);
         slideDO.setUpdatedAt(new Date());
         this.slideDao.save(slideDO);
 
         SlideContent content = slide.getContent();
         if (null != content) {
-            SlideContentDO contentDO = this.doConverter.model2Do(content);
+            SlideContentDO contentDO = this.doConverter.convert(content);
             contentDO.setUpdatedAt(new Date());
             this.contentDao.save(contentDO);
         }

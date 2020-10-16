@@ -18,7 +18,7 @@ public interface RequestConverter {
      * @param slide Slide
      * @return SlideInfo
      */
-    SlideInfo model2Info(Slide slide);
+    SlideInfo convert(Slide slide);
 
     /**
      * Model to info
@@ -27,5 +27,5 @@ public interface RequestConverter {
      * @return SlideContentInfo
      */
     @SuppressWarnings("unused")
-    SlideContentInfo model2Info(SlideContent content);
+    SlideContentInfo convert(SlideContent content);
 }
