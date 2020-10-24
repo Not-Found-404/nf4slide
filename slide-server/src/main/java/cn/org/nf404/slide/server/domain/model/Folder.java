@@ -1,5 +1,6 @@
 package cn.org.nf404.slide.server.domain.model;
 
+import cn.org.nf404.slide.api.enums.OwnerTypeEnum;
 import cn.org.nf404.slide.common.model.domain.BaseModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,9 +24,14 @@ public class Folder extends BaseModel {
     private Integer level;
 
     /**
-     * 文件库id
+     * 当前folder的类型对应的userId或teamId
      */
-    private Long libraryId;
+    private Long ownerId;
+
+    /**
+     * 当前folder的类型
+     */
+    private OwnerTypeEnum ownerType;
 
     /**
      * 目录名

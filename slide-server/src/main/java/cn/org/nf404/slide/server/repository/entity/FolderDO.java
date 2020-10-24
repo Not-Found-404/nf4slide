@@ -14,7 +14,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "folder", indexes = {
-        @Index(name = "idx_library_id", columnList = "library_id"),
+        @Index(name = "idx_owner_id", columnList = "owner_id,owner_type"),
         @Index(name = "idx_pid", columnList = "pid")}
 )
 public class FolderDO extends BaseDO {
@@ -32,10 +32,16 @@ public class FolderDO extends BaseDO {
     private Integer level;
 
     /**
-     * 文件库id
+     * folder对应ownerType对应对id
      */
-    @Column(name = "library_id")
-    private Long libraryId;
+    @Column(name = "owner_id", nullable = false)
+    private Long ownerId;
+
+    /**
+     * 当前folder对应对类型
+     */
+    @Column(name="owner_type",nullable = false)
+    private String ownerType;
 
     /**
      * 目录名
