@@ -11,4 +11,6 @@ import java.io.Serializable;
 @Data
 public class SlideRenderDetailRequestDTO implements Serializable {
     private static final long serialVersionUID = -2593792298446151887L;
+
+    private Long slideId;
 }

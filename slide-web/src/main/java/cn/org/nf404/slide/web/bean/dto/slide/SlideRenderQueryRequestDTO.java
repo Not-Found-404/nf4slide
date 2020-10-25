@@ -12,5 +12,5 @@ import java.io.Serializable;
 public class SlideRenderQueryRequestDTO implements Serializable {
     private static final long serialVersionUID = 4934720130645398393L;
 
-
+    private String slideName;
 }
