@@ -34,7 +34,7 @@ public class FolderDO extends BaseDO {
     /**
      * folder对应ownerType对应对id
      */
-    @Column(name = "owner_id", nullable = false)
+    @Column(name = "owner_id",nullable = false)
     private Long ownerId;
 
     /**

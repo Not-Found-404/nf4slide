@@ -47,10 +47,6 @@ public class Folder extends BaseModel {
      * 子目录
      */
     private List<Folder> children;
-
-    /**
-     * 目录下的幻灯片
-     */
-    private List<Slide> slides;
+    
 
 }

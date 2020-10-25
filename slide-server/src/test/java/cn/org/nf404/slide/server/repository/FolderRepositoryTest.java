@@ -27,7 +27,7 @@ public class FolderRepositoryTest extends BaseTest {
         folder.setOwnerId(1L);
         folder.setOwnerType(OwnerTypeEnum.USER);
         folder.setId(1L);
-        folder = this.folderRepository.creat(folder);
+        folder = this.folderRepository.create(folder);
         assert folder != null;
 
         Folder findById = this.folderRepository.findById(folder.getId());
@@ -45,7 +45,7 @@ public class FolderRepositoryTest extends BaseTest {
         folder.setOwnerType(OwnerTypeEnum.USER);
         folder.setId(1L);
         folder.setStatus(ModelStatusEnum.NORMAL);
-        folder = this.folderRepository.creat(folder);
+        folder = this.folderRepository.create(folder);
         assert folder != null;
 
         folder.setName("after modify name");

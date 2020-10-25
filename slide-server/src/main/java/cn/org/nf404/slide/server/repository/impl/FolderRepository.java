@@ -10,8 +10,11 @@ import lombok.AllArgsConstructor;
 import org.mvel2.ast.Fold;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * @author ghy ArcryGe
@@ -27,17 +30,25 @@ public class FolderRepository {
     public Folder findById(Long id) {
         Optional<FolderDO> byId = this.folderDao.findById(id);
         FolderDO folderDO = byId.orElse(null);
-        return this.folderDoConverter.convert(folderDO);
+        Folder folder = this.folderDoConverter.convert(folderDO);
+        if (null != folder) {
+            List<FolderDO> childDos = this.folderDao.findByPid(folder.getId());
+            List<Folder> children = childDos.stream()
+                    .map(this.folderDoConverter::convert)
+                    .collect(Collectors.toList());
+            folder.setChildren(children);
+        }
+        return folder;
     }
 
-    public Folder creat(Folder folder) {
+    public Folder create(Folder folder) {
         FolderDO folderDO = this.folderDoConverter.convert(folder);
         BaseDO.init(folderDO);
         FolderDO save = this.folderDao.save(folderDO);
         return this.folderDoConverter.convert(save);
     }
 
-    public Folder update(Folder folder){
+    public Folder update(Folder folder) {
         FolderDO folderDO = this.folderDoConverter.convert(folder);
         BaseDO.init(folderDO);
         folderDO.setUpdatedAt(new Date());

@@ -26,6 +26,12 @@ public class UserDO extends BaseDO implements Serializable {
     private Long id;
 
     /**
+     * 用户默认根目录id
+     */
+    @Column(name = "root_folder_id")
+    private Long rootFolderId;
+
+    /**
      * 昵称
      */
     @Column(name = "nickname")
