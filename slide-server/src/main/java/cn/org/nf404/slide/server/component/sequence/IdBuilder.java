@@ -17,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @AllArgsConstructor
 public class IdBuilder {
     private Map<String, SequenceRange> nameToRange = new ConcurrentHashMap<>();
-    private SharedSequenceRepoistory repoistory;
+    private SharedSequenceRepository repository;
 
     public Long nextId(Class clazz, Long routeValue) {
         String name = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, clazz.getSimpleName());
@@ -27,7 +27,7 @@ public class IdBuilder {
     }
 
     private long nextValue(String name) {
-        SequenceRange sequenceRange = nameToRange.computeIfAbsent(name, this.repoistory::nextRange);
+        SequenceRange sequenceRange = nameToRange.computeIfAbsent(name, this.repository::nextRange);
         return sequenceRange.getAndIncrement();
     }
 

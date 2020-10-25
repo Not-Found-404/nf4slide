@@ -1,8 +1,12 @@
 package cn.org.nf404.slide.server.domain.converter;
 
 import cn.org.nf404.slide.api.request.slide.SlideRenderQueryRequest;
+import cn.org.nf404.slide.api.response.roster.RosterGroupInfo;
+import cn.org.nf404.slide.api.response.roster.RosterInfo;
 import cn.org.nf404.slide.api.response.slide.SlideContentInfo;
 import cn.org.nf404.slide.api.response.slide.SlideInfo;
+import cn.org.nf404.slide.server.domain.model.Roster;
+import cn.org.nf404.slide.server.domain.model.RosterGroup;
 import cn.org.nf404.slide.server.domain.model.Slide;
 import cn.org.nf404.slide.server.domain.model.SlideContent;
 import cn.org.nf404.slide.server.repository.criteria.SlideQueryCriteria;
@@ -31,6 +35,22 @@ public interface RequestConverter {
      */
     @SuppressWarnings("unused")
     SlideContentInfo convert(SlideContent content);
+
+    /**
+     * Model to info
+     *
+     * @param roster Roster
+     * @return RosterInfo
+     */
+    RosterInfo convert(Roster roster);
+
+    /**
+     * Model to info
+     *
+     * @param group RosterGroup
+     * @return RosterGroupInfo
+     */
+    RosterGroupInfo convert(RosterGroup group);
 
     /**
      * Request to criteria

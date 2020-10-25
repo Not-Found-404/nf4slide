@@ -1,13 +1,7 @@
 package cn.org.nf404.slide.server.repository.converter;
 
-import cn.org.nf404.slide.server.domain.model.Folder;
-import cn.org.nf404.slide.server.domain.model.Slide;
-import cn.org.nf404.slide.server.domain.model.SlideContent;
-import cn.org.nf404.slide.server.domain.model.User;
-import cn.org.nf404.slide.server.repository.entity.FolderDO;
-import cn.org.nf404.slide.server.repository.entity.SlideContentDO;
-import cn.org.nf404.slide.server.repository.entity.SlideDO;
-import cn.org.nf404.slide.server.repository.entity.UserDO;
+import cn.org.nf404.slide.server.domain.model.*;
+import cn.org.nf404.slide.server.repository.entity.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -53,7 +47,7 @@ public interface DoConverter {
 
 
     /**
-     * do to model
+     * Do to model
      *
      * @param userDO UserDO
      * @return User
@@ -73,4 +67,33 @@ public interface DoConverter {
     @Mapping(source = "role", target = "roleJson")
     @Mapping(source = "extra", target = "extraJson")
     UserDO convert(User user);
+
+    /**
+     * Model to do
+     *
+     * @param roster Roster
+     * @return RosterDO
+     */
+    @Mapping(source = "extra", target = "extraJson")
+    @Mapping(target = "groupId", source = "group.groupId")
+    @Mapping(target = "groupName", source = "group.groupName")
+    RosterDO convert(Roster roster);
+
+    /**
+     * Do to model
+     *
+     * @param roster RosterDO
+     * @return Roster
+     */
+    @Mapping(source = "extraJson", target = "extra")
+    @Mapping(source = "groupId", target = "group.groupId")
+    @Mapping(source = "groupName", target = "group.groupName")
+    Roster convert(RosterDO roster);
+
+    /**
+     * Do to model
+     * @param roster RosterDO
+     * @return RosterGroup
+     */
+    RosterGroup convertToGroup(RosterDO roster);
 }
