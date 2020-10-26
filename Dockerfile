@@ -1,5 +1,17 @@
 FROM java
 
+ARG MYSQL_HOST
+ENV MYSQL_HOST $MYSQL_HOST
+
+ARG MYSQL_USERNAME
+ENV MYSQL_USERNAME $MYSQL_USERNAME
+
+ARG MYSQL_PASSWORD
+ENV MYSQL_PASSWORD $MYSQL_PASSWORD
+
+ARG REDIS_HOST
+ENV REDIS_HOST $REDIS_HOST
+
 RUN mkdir /app
 COPY slide-web-starter/target/slide-web-starter.jar  /app/app.jar
 CMD ["java","-jar" ,"/app/app.jar"]

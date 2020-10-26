@@ -1,6 +1,7 @@
 package cn.org.nf404.slide.web.aop;
 
 import com.google.common.base.Strings;
+import com.google.common.base.Throwables;
 import com.google.common.collect.ImmutableMap;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({Exception.class})
     protected ResponseEntity<Object> onException(Exception ignore, HttpServletRequest request) {
+        log.error("invoke error:{}", Throwables.getStackTraceAsString(ignore));
         Locale locale = this.localResolver.resolveLocale(request);
         String error = this.messageSource.getMessage("server.error", new String[0], "server.error", locale);
         error = Strings.isNullOrEmpty(error) ? "system.error" : error;
