@@ -28,6 +28,8 @@ public class IdBuilder {
 
     private long nextValue(String name) {
         SequenceRange sequenceRange = nameToRange.computeIfAbsent(name, this.repository::nextRange);
+
+
         return sequenceRange.getAndIncrement();
     }
 

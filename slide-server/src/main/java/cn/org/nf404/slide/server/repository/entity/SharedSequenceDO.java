@@ -1,5 +1,6 @@
-package cn.org.nf404.slide.server.component.sequence;
+package cn.org.nf404.slide.server.repository.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -16,6 +17,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "shard_sequence")
+@AllArgsConstructor
 public class SharedSequenceDO implements Serializable {
     private static final long serialVersionUID = -596345520485088184L;
 

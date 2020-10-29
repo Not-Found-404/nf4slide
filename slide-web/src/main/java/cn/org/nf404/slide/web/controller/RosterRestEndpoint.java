@@ -40,7 +40,6 @@ public class RosterRestEndpoint {
     @ApiOperation("组查询")
     public List<RosterGroupInfo> queryGroup(RosterGroupQueryRequestDTO requestDTO) {
         RosterGroupQueryRequest request = this.dtoConverter.convert(requestDTO);
-        request.setUserId(RequestContext.getUserId());
         return FacadeInvoker.invoke(this.rosterFacade::queryGroup, request);
     }
 }
