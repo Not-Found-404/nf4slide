@@ -56,7 +56,7 @@ public class SlideContent extends BaseModel {
      */
     private Map<String, String> config;
 
-    static SlideContent init() {
+    public static SlideContent init() {
         SlideContent content = new SlideContent();
         content.setVersion(0);
         content.setContentText(Strings.EMPTY);

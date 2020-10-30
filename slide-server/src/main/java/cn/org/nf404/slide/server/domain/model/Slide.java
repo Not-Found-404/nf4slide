@@ -69,7 +69,6 @@ public class Slide extends BaseModel {
 
     public static Slide init(String name, Long creatorId, Long folderId) {
         Slide slide = new Slide();
-        slide.setContent(SlideContent.init());
         slide.setAccessLevel(AccessLevelEnum.NONE);
         slide.setAuthors(Sets.newHashSet(creatorId.toString()));
         slide.setFolderId(folderId);

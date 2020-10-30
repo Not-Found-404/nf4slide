@@ -22,7 +22,6 @@ public class UserDO extends BaseDO implements Serializable {
 
     @Id
     @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**

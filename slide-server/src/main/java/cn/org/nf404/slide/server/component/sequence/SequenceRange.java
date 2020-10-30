@@ -7,6 +7,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * @author dx DingXing
  * @since 2020-10-22
  */
+@SuppressWarnings("WeakerAccess")
 public class SequenceRange {
     private final long max;
     private final AtomicLong value;

@@ -5,6 +5,7 @@ import cn.org.nf404.slide.api.request.slide.SlideCreateRequest;
 import cn.org.nf404.slide.api.request.slide.SlideUpdateRequest;
 import cn.org.nf404.slide.api.response.slide.SlideInfo;
 import cn.org.nf404.slide.common.utils.AssertUtil;
+import cn.org.nf404.slide.server.component.sequence.IdBuilder;
 import cn.org.nf404.slide.server.domain.converter.RequestConverter;
 import cn.org.nf404.slide.server.domain.model.Slide;
 import cn.org.nf404.slide.server.domain.model.SlideContent;
@@ -23,10 +24,18 @@ import org.springframework.stereotype.Service;
 public class SlideWriteService {
     private final SlideRepository slideRepository;
     private final RequestConverter converter;
+    private final IdBuilder idBuilder;
 
     public SlideInfo create(SlideCreateRequest request) {
         // TODO: 2020-10-14 Check
         Slide toCreateSlide = Slide.init(request.getSlideName(), request.getCreatorId(), request.getFolderId());
+        toCreateSlide.setId(idBuilder.nextId(Slide.class, request.getCreatorId()));
+
+        SlideContent content = SlideContent.init();
+        content.setId(idBuilder.nextId(SlideContent.class, request.getCreatorId()));
+        content.setSlideId(toCreateSlide.getId());
+
+        toCreateSlide.setContent(content);
 
         Slide slide = this.slideRepository.create(toCreateSlide);
         return converter.convert(slide);

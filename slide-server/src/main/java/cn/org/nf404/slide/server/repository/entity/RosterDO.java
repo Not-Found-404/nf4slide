@@ -22,7 +22,6 @@ public class RosterDO extends BaseDO{
 
     @Id
     @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**

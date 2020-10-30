@@ -16,8 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = IntegrationTestConfiguration.class)
-@Rollback
-@Transactional
+//@Rollback
+//@Transactional
 public abstract class BaseTest {
     @Autowired
     protected EnhancedRandom random;

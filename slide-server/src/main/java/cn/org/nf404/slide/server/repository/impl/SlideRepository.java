@@ -50,7 +50,6 @@ public class SlideRepository {
         SlideContentDO contentDO = this.doConverter.convert(toSave.getContent());
         if (null != contentDO) {
             BaseDO.init(contentDO);
-            contentDO.setSlideId(save.getId());
             this.contentDao.save(contentDO);
         }
 
