@@ -4,6 +4,9 @@ import cn.org.nf404.slide.server.repository.entity.FolderDO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
 /**
  * @author ghy ArcryGe
  * @version 1.0
@@ -11,4 +14,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface FolderDao extends JpaRepository<FolderDO, Long>, JpaSpecificationExecutor<FolderDO> {
+    List<FolderDO> findByPid(Long pid);
 }

@@ -54,6 +54,11 @@ public class User extends BaseModel {
     private String name;
 
     /**
+     * 用户默认根目录id
+     */
+    private Long rootFolderId;
+
+    /**
      * 角色
      */
     private Map<String, Object> role;

@@ -1,12 +1,17 @@
 package cn.org.nf404.slide.server.domain.service;
 
+import cn.org.nf404.slide.api.constants.FolderConstant;
+import cn.org.nf404.slide.api.enums.OwnerTypeEnum;
 import cn.org.nf404.slide.api.enums.UserTypeEnum;
 import cn.org.nf404.slide.api.request.user.UserModifyRequest;
 import cn.org.nf404.slide.api.request.user.UserRegistryRequest;
 import cn.org.nf404.slide.api.response.user.UserMetaData;
 import cn.org.nf404.slide.api.response.user.UserThinResponse;
 import cn.org.nf404.slide.common.model.exception.ServiceException;
+import cn.org.nf404.slide.server.domain.manager.UserManager;
+import cn.org.nf404.slide.server.domain.model.Folder;
 import cn.org.nf404.slide.server.domain.model.User;
+import cn.org.nf404.slide.server.repository.impl.FolderRepository;
 import cn.org.nf404.slide.server.repository.impl.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +26,9 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class UserWriteService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    private final UserManager userManager;
 
     public UserMetaData login(String mobile, String password) {
         User user = userRepository.findByPhoneAndPass(mobile, password);
@@ -56,6 +63,13 @@ public class UserWriteService {
         toCreate.setPassword(request.getPassword());
         toCreate.setType(UserTypeEnum.USER);
 
-        return this.userRepository.save(toCreate).getId();
+        Folder folder = new Folder();
+        folder.setLevel(FolderConstant.ROOT_LEVEL);
+        folder.setOwnerId(-1L);
+        folder.setOwnerType(OwnerTypeEnum.USER);
+        folder.setName("root folder");
+        folder.setPid(FolderConstant.PID);
+
+        return userManager.createUser(toCreate,folder);
     }
 }
